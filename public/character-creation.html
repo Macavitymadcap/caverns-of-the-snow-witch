@@ -1,0 +1,94 @@
+<article class="content">
+  <h2>Create Your Character</h2>
+  
+  <form
+    class="character-creation"
+    method="#"
+    x-data="{
+      name: null,
+      skill: null,
+      stamina: null,
+      luck: null,
+      potion: 'potion of Skill',
+      rollSkill() { 
+        this.skill = rollDie() + 6;
+      },
+      rollStamina() { 
+        this.stamina = rollDice() + 12;
+      },
+      rollLuck() { 
+        this.luck = rollDie() + 6;
+      }
+    }"
+    @submit.prevent="createCharacter(name, skill, stamina, luck, potion)"
+  >
+    <div class="form-input">
+      <label for="name">Character Name:</label>
+      <input 
+        type="text" 
+        id="name" 
+        x-model="name" 
+        required 
+        placeholder="Enter your name"
+      />
+    </div>
+
+    <div class="input-and-button">
+      <div class="form-input">
+        <label for="skill">SKILL</label>
+        <input 
+          type="number" 
+          id="skill" 
+          x-model="skill" 
+          required 
+        />
+      </div>
+
+      <button type="button" @click="rollSkill()">Roll</button>
+    </div>
+
+    <div class="input-and-button">
+      <div class="form-input">
+        <label for="stamina">STAMINA</label>
+        <input 
+          type="number" 
+          id="stamina" 
+          x-model="stamina" 
+          required 
+        />
+      </div>
+
+      <button type="button" @click="rollStamina()">Roll</button>
+    </div>
+
+    <div class="input-and-button">
+      <div class="form-input">
+        <label for="luck">LUCK</label>
+        <input 
+          type="number" 
+          id="luck" 
+          x-model="luck" 
+          required 
+        />
+      </div>
+
+      <button type="button" @click="rollLuck()">Roll</button>
+    </div>
+
+    <div class="form-input">
+      <label for="potion">Potion</label>
+      <select id="select" x-model="potion" required>
+        <option>Potion of Skill</option>
+        <option>Potion of Strength</option>
+        <option>Potion of Fortune</option>
+      </select>
+    </div>
+
+    <button 
+      type="submit" 
+      x-bind:disabled="!name || !skill || !stamina || !luck || !potion"
+    >
+      Begin Adventure
+    </button>
+  </form>
+</article>
