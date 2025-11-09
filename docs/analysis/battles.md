@@ -47,7 +47,7 @@ Stubb.
 During each round of combat, reduce your Attack Strength by 2 because you are
 not used to fighting in the dark.
 
-# Node 39 - Goblin (Unarmed Combat)
+## Node 39 - Goblin (Unarmed Combat)
 
 **Combatant**:
 

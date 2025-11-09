@@ -1,3 +1,10 @@
+/* the props */
+@import "https://unpkg.com/open-props";
+
+/* optional imports that use the props */
+@import "https://unpkg.com/open-props/normalize.min.css";
+@import "https://unpkg.com/open-props/buttons.min.css";
+
 
 :root {
   --border-radius: 4px;
@@ -16,19 +23,32 @@ body {
   line-height: 1.6;
 }
 
-header {
+a,
+button {
+  cursor: pointer;
+}
+
+header.site-header {
   padding: 1rem;
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: .25fr 1.75fr;
   gap: 1rem;
-  height: 10vh;
   align-items: center;
   justify-content:space-evenly;
 }
 
-a,
-button {
-  cursor: pointer;
+h1 {
+  font-size: var(--font-size-fluid-2);
+  display: contents;
+}
+
+h2 {
+  font-size: var(--font-size-fluid-1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-old-style);
 }
 
 @layer aside {
@@ -117,6 +137,11 @@ button {
     border-radius: 4px;
     transition: background-color 0.3s ease;
   }
+
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 main {
@@ -158,12 +183,13 @@ footer {
   display: grid;
   gap: 1rem;
   grid-template-rows: auto;
+  justify-content:space-evenly;
 }
 
 .input-and-button {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: .75fr .25fr;
+  grid-template-columns: .25fr .75fr;
   gap: .5rem;
 
   button {
@@ -175,4 +201,9 @@ footer {
 .form-input {
   display: grid;
   grid-template-rows: auto;
+}
+
+menu {
+  padding-left: 1rem;
+  display: grid;
 }
