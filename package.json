@@ -1,15 +1,16 @@
 {
   "name": "fighting-fantasy",
   "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "start": "bun run index.ts"
-  },
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
-  }
+  },
+  "private": true,
+  "scripts": {
+    "start": "bun run src/server.ts",
+    "build": "bun build src/components/index.ts --outdir=public/static"
+  },
+  "type": "module"
 }

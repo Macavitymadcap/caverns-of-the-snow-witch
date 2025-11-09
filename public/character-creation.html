@@ -34,6 +34,8 @@
     </div>
 
     <div class="input-and-button">
+      <button type="button" @click="rollSkill()" title="Roll for Skill">Roll</button>
+
       <div class="form-input">
         <label for="skill">SKILL</label>
         <input 
@@ -43,11 +45,11 @@
           required 
         />
       </div>
-
-      <button type="button" @click="rollSkill()">Roll</button>
     </div>
 
     <div class="input-and-button">
+      <button type="button" @click="rollStamina()" title="Roll for Stamina">Roll</button>
+
       <div class="form-input">
         <label for="stamina">STAMINA</label>
         <input 
@@ -57,11 +59,11 @@
           required 
         />
       </div>
-
-      <button type="button" @click="rollStamina()">Roll</button>
     </div>
 
     <div class="input-and-button">
+      <button type="button" @click="rollLuck()" title="Roll for Luck">Roll</button>
+
       <div class="form-input">
         <label for="luck">LUCK</label>
         <input 
@@ -71,8 +73,6 @@
           required 
         />
       </div>
-
-      <button type="button" @click="rollLuck()">Roll</button>
     </div>
 
     <div class="form-input">

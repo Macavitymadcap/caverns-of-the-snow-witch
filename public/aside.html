@@ -1,0 +1,150 @@
+<aside id="aside-popover-nav" popover x-ref="asidePopoverNav">
+  <header class="sidebar-header">
+    <h3>Navigation</h3>
+
+    <button popovertarget="aside-popover-nav" popovertargetaction="toggle">
+      × Close
+    </button>
+  </header>
+
+  <nav>
+    <menu hx-boost="true">
+      <li>
+        <a
+          x-bind:hx-get="currentNode = 'character-creation' ? `/character-creation.html` : `/nodes/${currentNode}.html`"
+          hx-target="main"
+          @click="toggleSidebar()"
+        >
+          Current Scene
+        </a>
+      </li>
+
+      <h4>Rules</h4>
+      
+      <li>
+        <a class="btn" 
+          hx-get="/rules/fighting-monsters.html" 
+          hx-target="main" 
+          @click="toggleSidebar()"
+        >
+          Fighting Monsters
+        </a>
+      </li>
+
+      <li>
+        <a class="btn" 
+          hx-get="/rules/equipment-and-potions.html" 
+          hx-target="main"
+          @click="toggleSidebar()"
+        >
+          Equipment & Potions
+        </a>
+      </li>
+
+      <li>
+        <a class="btn" 
+          hx-get="/rules/hints-on-play.html"
+          hx-target="main"
+          @click="toggleSidebar()"
+        >
+          Hints On Play
+        </a>
+      </li>
+
+      <li>
+        <a class="btn" 
+          hx-get="/background.html"
+          hx-target="main"
+          @click="toggleSidebar()"
+        >
+          Background
+        </a>
+      </li>
+    </menu>
+  </nav>
+
+  <template x-if="character">
+    <article>
+      <h4>Adventure Sheet</h4>
+
+      <div>
+        <b>NAME</b>
+        <span x-text="character.name"></span>
+      </div>
+
+      <div class="stats">
+        <div>
+          <b>SKILL</b>
+          <dl>
+            <dt>
+              <i>Initial</i>
+            </dt>
+            <dd x-text="character.skill"></dd>
+          
+            <dt>
+              <i>Current</i>
+            </dt>
+            <dd x-text="character.currentSkill"></dd>
+          </dl>
+        </div>
+
+        <div>
+          <b>STAMINA</b>
+          <dl>
+            <dt>
+              <i>Initial</i>
+            </dt>
+            <dd x-text="character.stamina"></dd>
+          
+            <dt>
+              <i>Current</i>
+            </dt>
+            <dd x-text="character.currentStamina"></dd>
+          </dl>
+        </div>
+
+        <div>
+          <b>LUCK</b>
+          <dl>
+            <dt>
+              <i>Initial</i>
+            </dt>
+            <dd x-text="character.luck"></dd>
+          
+            <dt>
+              <i>Current</i>
+            </dt>
+            <dd x-text="character.currentLuck"></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div>
+        <b>GOLD</b>
+        <span x-text="character.gold"></span>
+      </div>
+
+      <div>
+        <b>PROVISIONS</b>
+        <span x-text="character.provisions"></span>
+        <button type="button">Eat</button>
+      </div>
+
+      <div>
+        <b>JEWELS</b>
+        <span x-text="character.jewels.join(', ')"></span>
+      </div>
+
+      <div>
+        <b>POTIONS</b>
+        <span x-text="character.potions.join(', ')"></span>
+      </div>
+
+      <div>
+        <b>Equipment</b>
+        <span x-text="character.equipment.join(', ')"></span>
+      </div>
+
+    </article>
+  </template>
+</aside>

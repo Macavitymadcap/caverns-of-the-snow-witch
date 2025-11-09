@@ -11,7 +11,7 @@
     crossorigin="anonymous"
   >
   </script>
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="static/style.css"> 
 </head>
 <body 
   x-data="{
@@ -35,7 +35,7 @@
         gold: 0
       };
       this.saveGame();
-      this.navigateTo('background');
+      htmx.ajax('GET', `/background.html`, {target: 'main', swap: 'innerHTML'});
     },
 
     navigateTo(nodeId) {
@@ -83,157 +83,21 @@
     }
   }"
 >
-  <header>
+  <header class="site-header">
     <button popovertarget="aside-popover-nav" popovertargetaction="toggle">
         ☰ Menu
     </button>
-
+    
     <h1>Caverns of The Snow Witch</h1>
-
-    <button>I</button>
+    
   </header>
   
-  <aside id="aside-popover-nav" popover x-ref="asidePopoverNav">
-    <header class="sidebar-header">
-      <h3>Navigation</h3>
-
-      <button popovertarget="aside-popover-nav" popovertargetaction="toggle">
-        × Close
-      </button>
-    </header>
-
-    <nav>
-      <ul hx-boost="true">
-        <li>
-          <a
-            x-bind:hx-get="currentNode = 'character-creation' ? `/character-creation.html` : `/nodes/${currentNode}.html`"
-            hx-target="main"
-            @click="toggleSidebar()"
-          >
-            Current Scene
-          </a>
-        </li>
-
-        <h4>Rules</h4>
-        
-        <li>
-          <a 
-            hx-get="/rules/fighting-monsters.html" 
-            hx-target="main" 
-            @click="toggleSidebar()"
-          >
-            Fighting Monsters
-          </a>
-        </li>
-
-        <li>
-          <a 
-            hx-get="/rules/equipment-and-potions.html" 
-            hx-target="main"
-            @click="toggleSidebar()"
-          >
-            Equipment & Potions
-          </a>
-        </li>
-
-        <li>
-          <a 
-            hx-get="/rules/hints-on-play.html"
-            hx-target="main"
-            @click="toggleSidebar()"
-          >
-            Hints On Play
-          </a>
-        </li>
-
-        <li>
-          <a 
-            hx-get="/nodes/background.html"
-            hx-target="main"
-            @click="toggleSidebar()"
-          >
-            Background
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <template x-if="character">
-      <article>
-        <h4>Adventure Sheet</h4>
-
-        <div>
-          <b>NAME</b>
-          <span x-text="character.name"></span>
-        </div>
-
-        <div>
-          <b>SKILL</b>
-          <span>
-            <i>Initial</i>
-            <span x-text="character.skill"></span>
-          </span>
-
-          <span>
-            <i>Current</i>
-            <span x-text="character.currentSkill"></span>
-          </span>
-        </div>
-
-          <div>
-          <b>STAMINA</b>
-          <span>
-            <i>Initial</i>
-            <span x-text="character.stamina"></span>
-          </span>
-
-          <span>
-            <i>Current</i>
-            <span x-text="character.currentStamina"></span>
-          </span>
-        </div>
-
-        <div>
-          <b>LUCK</b>
-          <span>
-            <i>Initial</i>
-            <span x-text="character.luck"></span>
-          </span>
-
-          <span>
-            <i>Current</i>
-            <span x-text="character.currentLuck"></span>
-          </span>
-        </div>
-
-        <div>
-          <b>GOLD</b>
-          <span x-text="character.gold"></span>
-        </div>
-
-        <div>
-          <b>PROVISIONS</b>
-          <span x-text="character.provisions"></span>
-          <button type="button">Eat</button>
-        </div>
-
-        <div>
-          <b>JEWELS</b>
-          <span x-text="character.jewels.join(', ')"></span>
-        </div>
-
-        <div>
-          <b>POTIONS</b>
-          <span x-text="character.potions.join(', ')"></span>
-        </div>
-
-        <div>
-          <b>Equipment</b>
-          <span x-text="character.equipment.join(', ')"></span>
-        </div>
-
-      </article>
-    </template>
+  <aside 
+    id="aside-popover-nav" 
+    hx-get="/aside.html" 
+    hx-trigger="load once" 
+    hx-swap="outerHTML"
+    >
   </aside>
 
   <main hx-boost="true">
@@ -246,7 +110,7 @@
   </main>    
   
   <footer>
-      <p>&copy; 2025 Fighting Fantasy.</p>
+    <p>Research Project made in fair use.</p>
   </footer>
 </body>
 </html>
