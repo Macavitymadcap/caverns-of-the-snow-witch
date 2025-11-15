@@ -32,7 +32,6 @@ header.site-header {
   padding: 1rem;
   position: relative;
   display: grid;
-  grid-template-columns: .25fr 1.75fr;
   gap: 1rem;
   align-items: center;
   justify-content:space-evenly;
